@@ -1,4 +1,4 @@
-
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 var path = require('path');
 
 var BUILD_DIR = path.resolve(__dirname, './');
@@ -14,25 +14,24 @@ var config = {
         contentBase: BUILD_DIR
     },
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.jsx?/,
-                include: APP_DIR,
-                loader: 'babel-loader'
+                loader: 'babel-loader',
+                include: APP_DIR
+            },
+            {
+                test: /\.scss$/,
+                use: ExtractTextPlugin.extract({
+                    fallback: "style-loader",
+                    use: "css-loader!sass-loader",
+                })
             }
         ]
-        ,
-        rules: [{
-            test: /\.scss$/,
-            use: [{
-                loader: "style-loader" // creates style nodes from JS strings
-            }, {
-                loader: "css-loader" // translates CSS into CommonJS
-            }, {
-                loader: "sass-loader" // compiles Sass to CSS
-            }]
-        }]
-    }
+    },
+    plugins: [
+        new ExtractTextPlugin('style.css'),
+    ]
 };
 
 module.exports = config;
