@@ -1,8 +1,10 @@
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const ExtractTextPlugin = require("extract-text-webpack-plugin")
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
+
 var path = require('path');
 
-var BUILD_DIR = path.resolve(__dirname, './');
-var APP_DIR = path.resolve(__dirname, 'src/');
+var BUILD_DIR = path.resolve(__dirname, './')
+var APP_DIR = path.resolve(__dirname, 'src/')
 
 var config = {
     entry: APP_DIR + '/index.jsx',
@@ -24,13 +26,16 @@ var config = {
                 test: /\.sass$/,
                 use: ExtractTextPlugin.extract({
                     fallback: "style-loader",
-                    use: "css-loader!sass-loader",
+                    use: "css-loader!sass-loader"
                 })
             }
         ]
     },
     plugins: [
         new ExtractTextPlugin('style.css'),
+        new UglifyJSPlugin({
+            minimize: true
+        })
     ]
 };
 

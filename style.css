@@ -1,2 +1,7 @@
 * {
-  background: green; }
+  background: green;
+  margin: 500px;
+  color: red; }
+
+body {
+  padding: 50px; }
