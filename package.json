@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "watch": "webpack --progress --watch",
+    "start": "webpack-dev-server --open --progress --colors",
+    "build": "webpack"
   },
   "author": "",
   "license": "ISC",
@@ -16,5 +18,15 @@
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "webpack": "^3.6.0"
+  },
+  "devDependencies": {
+    "bootstrap-sass": "^3.3.7",
+    "css-loader": "^0.28.7",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "resolve-url-loader": "^2.1.0",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.18.2"
   }
 }
