@@ -21,7 +21,7 @@ var config = {
                 include: APP_DIR
             },
             {
-                test: /\.scss$/,
+                test: /\.sass$/,
                 use: ExtractTextPlugin.extract({
                     fallback: "style-loader",
                     use: "css-loader!sass-loader",
